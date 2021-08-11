@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import data from "./data";
+import SingleItem from "./SingleItem";
+import Menu from "./menu";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [items, setItems] = useState(data);
+
+    const handleFilterBtn = (targetCat) => {
+        if (targetCat === "all") {
+            setItems(data);
+        } else {
+            const newItems = data.filter(
+                (value) => value.category === targetCat
+            );
+            setItems(newItems);
+        }
+    };
+
+    return (
+        <div className="container">
+            <div className="wrapper">
+                <div className="title">
+                    <h2>our menu</h2>
+                    <div className="underline"></div>
+                </div>
+                <Menu handleFilterBtn={handleFilterBtn} />
+                <div className="content">
+                    {items.map((value) => {
+                        return <SingleItem key={value.id} {...value} />;
+                    })}
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default App;

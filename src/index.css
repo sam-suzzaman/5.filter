@@ -1,13 +1,138 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ============ Common Css ============== */
+
+.container {
+    width: 100vw;
+    background-color: #befdf5;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    width: 90vw;
+    max-width: 1170px;
+    padding: 100px 0;
+}
+
+/* =============== Title =============== */
+
+.title {
+    margin-bottom: 65px;
+    text-align: center;
+}
+.title h2 {
+    text-transform: uppercase;
+    font-size: 40px;
+    color: #333;
+    position: relative;
+}
+.title h2:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -15px;
+    width: 70px;
+    height: 4px;
+    background: #da7272;
+    transform: translateX(-50%);
+}
+
+/* ============= Filter Button ================ */
+.menu {
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+}
+.menu .btn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 26px;
+    font-weight: light;
+    text-transform: capitalize;
+    padding: 8px 15px;
+    margin: 0 10px;
+    color: #da7272;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.menu .btn:hover {
+    color: #fff;
+    background-color: #da7272;
+    border-radius: 5px;
+}
+
+/* =============== Content ================= */
+.content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 60px 40px;
+}
+.card {
+    display: grid;
+    grid-template-columns: 225px 1fr;
+    grid-gap: 0 24px;
+}
+.card img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 175px;
+    box-sizing: border-box;
+    border: 4px solid #da7272;
+    border-radius: 0 8px 8px 0;
+}
+.card .text {
+}
+.text header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #333;
+}
+.text header h4 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+    line-height: 1;
+}
+.text header h4:nth-child(2) {
+    color: #da7272;
+}
+.text .info {
+    font-size: 20px;
+    color: #696969;
+    text-align: justify;
+    padding-top: 20px;
+    line-height: 25px;
+}
+
+/* ============= Responsive ================= */
+@media (max-width: 1199px) {
+    .content {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 767px) {
+    .card {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px 40px;
+    }
+}
+@media (max-width: 375px) {
+    .menu {
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
 }
